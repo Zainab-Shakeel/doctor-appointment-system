@@ -1,17 +1,23 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-import PatientDashboard from "./pages/PatientDashboard";
+import Signup from "./pages/Signup";
 import AssistantDashboard from "./pages/AssistantDashboard";
+import PatientDashboard from "./pages/PatientDashboard";
+import React from "react";
 
 function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
+        {/* 🔁 Redirect base URL to /login */}
+        <Route path="/" element={<Navigate to="/login" />} />
+
         <Route path="/login" element={<Login />} />
-        <Route path="/patient" element={<PatientDashboard />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/assistant" element={<AssistantDashboard />} />
+        <Route path="/patient" element={<PatientDashboard />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
 
